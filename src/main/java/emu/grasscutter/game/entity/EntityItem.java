@@ -113,7 +113,7 @@ public class EntityItem extends EntityBaseGadget {
 
         SceneGadgetInfo.Builder gadgetInfo = SceneGadgetInfo.newBuilder()
                 .setGadgetId(this.getItemData().getGadgetId())
-                .setTrifleItem(this.getItem().toProto())
+                //.setTrifleItem(this.getItem().toProto()) 标记
                 .setBornType(GadgetBornType.GADGET_BORN_TYPE_IN_AIR)
                 .setAuthorityPeerId(this.getWorld().getHostPeerId())
                 .setIsEnableInteract(true);
