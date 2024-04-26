@@ -62,9 +62,9 @@ public class PacketPlayerLoginRsp extends BasePacket {
                 .setResVersionConfig(info.getResVersionConfig())
                 .setClientVersionSuffix(info.getClientVersionSuffix())
                 .setClientSilenceVersionSuffix(info.getClientSilenceVersionSuffix())
-                //.setIsScOpen(false)标记
-                //.setScInfo(ByteString.copyFrom(new byte[] {}))不标记
-                //.setRegisterCps("mihoyo")标记
+                .setIsScOpen(false)
+                //.setScInfo(ByteString.copyFrom(new byte[] {}))
+                .setRegisterCps("mihoyo")
                 .setCountryCode("US")
                 .build();
 
