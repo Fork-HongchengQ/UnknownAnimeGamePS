@@ -18,9 +18,11 @@ import emu.grasscutter.server.packet.send.PacketSceneAreaUnlockNotify;
 import emu.grasscutter.server.packet.send.PacketScenePointUnlockNotify;
 import emu.grasscutter.server.packet.send.PacketSetOpenStateRsp;
 import emu.grasscutter.server.packet.send.PacketUnlockTransPointRsp;
+import static emu.grasscutter.config.Configuration.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 // @Entity
 public class PlayerProgressManager extends BasePlayerDataManager {
@@ -42,10 +44,19 @@ public class PlayerProgressManager extends BasePlayerDataManager {
         // Add statue quests if necessary.
         //this.addStatueQuestsOnLogin();
 
-        // Auto-unlock the first statue and map area, until we figure out how to make
-        // that particular statue interactable.
-        this.player.getUnlockedScenePoints(3).add(7);
-        this.player.getUnlockedSceneAreas(3).add(1);
+        final List<Integer> sceneAreas = IntStream.range(1, 1000).boxed().toList();
+        if (GAME_INFO.loginUnlockMap) {
+            //开局解锁全图
+            this.player.getUnlockedSceneAreas(3).addAll(sceneAreas);
+            this.player.getUnlockedSceneAreas(4).addAll(sceneAreas);
+            this.player.getUnlockedSceneAreas(5).addAll(sceneAreas);
+            this.player.getUnlockedSceneAreas(6).addAll(sceneAreas);
+            this.player.getUnlockedSceneAreas(7).addAll(sceneAreas);
+            GameData.getScenePointsPerScene().forEach((sceneId, scenePoints) -> this.player.getUnlockedScenePoints(sceneId).addAll(scenePoints));
+        } else {
+            this.player.getUnlockedScenePoints(3).add(7);
+            this.player.getUnlockedSceneAreas(3).add(1);
+        }
 
     }
 

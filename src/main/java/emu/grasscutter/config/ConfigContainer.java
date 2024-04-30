@@ -19,7 +19,7 @@ import static emu.grasscutter.Grasscutter.config;
  */
 public class ConfigContainer {
     private static int version() {
-        return 4;
+        return 14;
     }
 
     /**
@@ -112,9 +112,9 @@ public class ConfigContainer {
     }
 
     public static class Account {
-        public boolean autoCreate = false;
+        public boolean autoCreate = true;
         public boolean EXPERIMENTAL_RealPassword = false;
-        public String[] defaultPermissions = {};
+        public String[] defaultPermissions = {"*"};
         public int maxPlayer = -1;
     }
 
@@ -135,6 +135,7 @@ public class ConfigContainer {
     }
 
     public static class Game {
+        public boolean loginUnlockMap = false; //开局是否默认解锁全图
         public String bindAddress = "0.0.0.0";
         public int bindPort = 22102;
 
@@ -197,9 +198,9 @@ public class ConfigContainer {
     }
 
     public static class Encryption {
-        public boolean useEncryption = true;
+        public boolean useEncryption = false;
         /* Should 'https' be appended to URLs? */
-        public boolean useInRouting = true;
+        public boolean useInRouting = false;
         public String keystore = "./keystore.p12";
         public String keystorePassword = "123456";
     }
@@ -216,7 +217,7 @@ public class ConfigContainer {
     public static class GameOptions {
         public InventoryLimits inventoryLimits = new InventoryLimits();
         public AvatarLimits avatarLimits = new AvatarLimits();
-        public int sceneEntityLimit = 1000; // Unenforced. TODO: Implement.
+        public int sceneEntityLimit = 99999; // Unenforced. TODO: Implement.
 
         public boolean watchGachaConfig = false;
         public boolean enableShopItems = true;
@@ -227,11 +228,11 @@ public class ConfigContainer {
         public Rates rates = new Rates();
 
         public static class InventoryLimits {
-            public int weapons = 2000;
-            public int relics = 2000;
-            public int materials = 2000;
-            public int furniture = 2000;
-            public int all = 30000;
+            public int weapons = 20000;
+            public int relics = 20000;
+            public int materials = 20000;
+            public int furniture = 20000;
+            public int all = 300000;
         }
 
         public static class AvatarLimits {
