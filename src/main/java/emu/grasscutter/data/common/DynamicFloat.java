@@ -9,7 +9,7 @@ import it.unimi.dsi.fastutil.objects.Object2FloatMap;
 import lombok.val;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.luaj.vm2.ast.Str;
+//import org.luaj.vm2.ast.Str;
 
 public class DynamicFloat {
     public static DynamicFloat ZERO = new DynamicFloat(0f);

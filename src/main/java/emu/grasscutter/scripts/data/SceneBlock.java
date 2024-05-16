@@ -50,7 +50,7 @@ public class SceneBlock {
         this.sceneId = sceneId;
         this.setLoaded(true);
 
-        CompiledScript cs = ScriptLoader.getScript("Scene/" + sceneId + "/scene" + sceneId + "_block" + this.id + ".lua");
+        CompiledScript cs = ScriptLoader.getScriptByPath("Scene/" + sceneId + "/scene" + sceneId + "_block" + this.id + ".lua");
 
         if (cs == null) {
             return null;
